@@ -7,5 +7,7 @@ int main()
     srand(time(NULL));
     Grid grid;
     Game game;
-    game.GameLoop();
+    //game.GameLoop();
+    Test test;
+    test.IntegrationTest2();
 }

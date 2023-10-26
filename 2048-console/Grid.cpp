@@ -34,6 +34,8 @@ void Grid::InitiateGrid()
     {
         this->cGrid[f].iValue = 0;
     }
+    this->RandNumber();
+    this->RandNumber();
 }
 
 void Grid::PrintGrid()

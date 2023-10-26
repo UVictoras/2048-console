@@ -13,10 +13,6 @@ void Game::GameLoop()
     int iNewIndex, iTemp, iAsciiValue, iScore = 0;
     char sKey; // Initiating our char variable which will be use to get the pressed key
     bool bIsGame = true, isWin = false;
-    this->gGameGrid.cGrid[0].iValue = 2;
-    this->gGameGrid.cGrid[1].iValue = 4;
-    this->gGameGrid.cGrid[2].iValue = 2;
-    this->gGameGrid.cGrid[3].iValue = 2;
     while (bIsGame)
     {
         for (int h = 0; h < 16; h++)
@@ -61,6 +57,7 @@ void Game::GameLoop()
                     }
                 }
             }
+            this->gGameGrid.RandNumber();
         }
 
         else if (iAsciiValue == 77) // 77 is the ASCII Value of the right arrow key
@@ -73,6 +70,7 @@ void Game::GameLoop()
                     iTemp = this->gGameGrid.cGrid[i].iValue;
                     this->gGameGrid.cGrid[i].iValue = 0;
                     this->gGameGrid.cGrid[iNewIndex].iValue = iTemp;
+
                     if ((iNewIndex - 3) % 4 != 0 && this->gGameGrid.cGrid[iNewIndex + 1].iValue == this->gGameGrid.cGrid[iNewIndex].iValue && this->gGameGrid.cGrid[iNewIndex + 1].isMerged == false) // We check if the case on the right of the selected one has the same value
                     { // If so, we merge them and increment the score
                         this->gGameGrid.cGrid[iNewIndex + 1].iValue *= 2;
@@ -82,6 +80,7 @@ void Game::GameLoop()
                     }
                 }
             }
+            this->gGameGrid.RandNumber();
         }
 
         else if (iAsciiValue == 80) // 80 is the ASCII Value of the down arrow key
@@ -94,6 +93,7 @@ void Game::GameLoop()
                     iTemp = this->gGameGrid.cGrid[i].iValue;
                     this->gGameGrid.cGrid[i].iValue = 0;
                     this->gGameGrid.cGrid[iNewIndex].iValue = iTemp;
+
                     if (iNewIndex < 12 && this->gGameGrid.cGrid[iNewIndex + 4].iValue == this->gGameGrid.cGrid[iNewIndex].iValue && this->gGameGrid.cGrid[iNewIndex + 4].isMerged == false) // We check if the case downward the selected one has the same value
                     { // If indeed they're equal, we merge them and increment the score
                         this->gGameGrid.cGrid[iNewIndex + 4].iValue *= 2;
@@ -103,6 +103,7 @@ void Game::GameLoop()
                     }
                 }
             }
+            this->gGameGrid.RandNumber();
         }
 
 
@@ -116,6 +117,7 @@ void Game::GameLoop()
                     iTemp = this->gGameGrid.cGrid[i].iValue;
                     this->gGameGrid.cGrid[i].iValue = 0;
                     this->gGameGrid.cGrid[iNewIndex].iValue = iTemp;
+
                     if (iNewIndex >= 4 && this->gGameGrid.cGrid[iNewIndex - 4].iValue == this->gGameGrid.cGrid[iNewIndex].iValue && this->gGameGrid.cGrid[iNewIndex - 4].isMerged == false) // We look if the upward case has the same value
                     { // If therefore, the case on top of ours whom value equals the selected one, we mix them and increment the score
                         this->gGameGrid.cGrid[iNewIndex - 4].iValue *= 2;
@@ -125,6 +127,7 @@ void Game::GameLoop()
                     }
                 }
             }
+            this->gGameGrid.RandNumber();
         }
 
         if (iAsciiValue == 27) // 27 is the ASCII Value of the Escape key, if we press it we end the game
