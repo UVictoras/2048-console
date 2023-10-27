@@ -19,24 +19,19 @@ void Game::GameLoop()
         {
             this->gGameGrid.cGrid[h].isMerged = false;
         }
-
         std::cout << "Score :" << iScore << "\n";
         this->gGameGrid.PrintGrid();
-
         if (this->gGameGrid.isFull() == true && this->gGameGrid.noPossibility() == true)  // Checking if the grid is full of tiles and if there is no movement possible, if so we end the game.
         {
             break;
         }
-
         if (this->gGameGrid.Win() == true)
         {
             isWin = true;
             break;
         }
-
         sKey = _getch(); // Function to get the pressed key
         iAsciiValue = sKey; // Getting the ASCII Value of the key
-
         if (iAsciiValue == 75) // 75 is the ASCII Value of the left arrow key
         {
             for (int i = 0; i < 16; i++) // We go through our array from the top left corner to the bottom right corner
@@ -47,7 +42,6 @@ void Game::GameLoop()
                     iTemp = this->gGameGrid.cGrid[i].iValue;
                     this->gGameGrid.cGrid[i].iValue = 0;
                     this->gGameGrid.cGrid[iNewIndex].iValue = iTemp;
-
                     if (iNewIndex % 4 != 0 && this->gGameGrid.cGrid[iNewIndex - 1].iValue == this->gGameGrid.cGrid[iNewIndex].iValue && this->gGameGrid.cGrid[iNewIndex - 1].isMerged == false) // We check if the case on the left of the selected one has the same value
                     { // If that's the case, we merge them and increment the score
                         this->gGameGrid.cGrid[iNewIndex - 1].iValue *= 2;
@@ -132,7 +126,6 @@ void Game::GameLoop()
 
         if (iAsciiValue == 27) // 27 is the ASCII Value of the Escape key, if we press it we end the game
             bIsGame = false;
-
         system("cls"); // Clearing the console logs 
     }
     if (isWin == false)
@@ -143,6 +136,5 @@ void Game::GameLoop()
     {
         std::cout << "You won !";
     }
-
     //this->gGameGrid.DeleteGrid();
 }

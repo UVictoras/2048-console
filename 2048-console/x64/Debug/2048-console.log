@@ -1,2 +1,4 @@
-﻿  Test.cpp
-  2048-console.vcxproj -> C:\Users\vicma\source\repos\dernière-version\2048-console\x64\Debug\2048-console.exe
+﻿  Grid.cpp
+C:\Users\vmartinan\source\repos\dernière-version\2048-console\Grid.cpp(153,15): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+C:\Users\vmartinan\source\repos\dernière-version\2048-console\Grid.cpp(134): warning C4715: 'Grid::Move' : les chemins de contrôle ne retournent pas tous une valeur
+  2048-console.vcxproj -> C:\Users\vmartinan\source\repos\dernière-version\2048-console\x64\Debug\2048-console.exe

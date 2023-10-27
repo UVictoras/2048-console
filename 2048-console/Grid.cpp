@@ -34,8 +34,14 @@ void Grid::InitiateGrid()
     {
         this->cGrid[f].iValue = 0;
     }
+
     this->RandNumber();
     this->RandNumber();
+    for (int t = 0; t < 16; t++)
+    {
+        if (this->cGrid[t].iValue == 4)
+            this->cGrid[t].iValue = 2;
+    }
 }
 
 void Grid::PrintGrid()
@@ -152,7 +158,11 @@ void Grid::RandNumber()
     int iSize = iTab.size();
     int iRandomNumber = iTab[this->Rnd(iSize)];
 
-    this->cGrid[iRandomNumber].iValue = 2;
+    int newValue = rand() % 10;
+    if (newValue == 9)
+        this->cGrid[iRandomNumber].iValue = 4;
+    else
+        this->cGrid[iRandomNumber].iValue = 2;
 }
 
 Case& Grid::operator[](int index)
